@@ -15,6 +15,9 @@ int main(int argc, char** argv) {
 	// Инициализация GLUT
 	glutInit(&argc, argv);
 
+	// Включение двойной буферизации и буфера цвета
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+
 	// Размер окна
 	glutInitWindowSize(500, 500);
 	// Положение окна
