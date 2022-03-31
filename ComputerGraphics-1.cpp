@@ -10,7 +10,6 @@ GLuint VBO;
 void RenderSceneCB() {
 	// Очистка буфера кадра
 	glClear(GL_COLOR_BUFFER_BIT);
-	// Сменя буфера фона на буфер кадра
 
 	// координаты вершин, исп. в буфере, рассм. как атрибут вершины с индексом 0
 	glEnableVertexAttribArray(0);
@@ -25,11 +24,12 @@ void RenderSceneCB() {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
 	// Вызываем функцию отрисовки
-	glDrawArrays(GL_POINTS, 0, 1);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 
 	// Отключение атрибутов вершины
 	glDisableVertexAttribArray(0);
 
+	// Сменя буфера фона на буфер кадра
 	glutSwapBuffers();
 }
 	
@@ -63,9 +63,11 @@ int main(int argc, char** argv) {
 	}
 
 	// Инициализация точек
-	vec3 Vertices[1];
-	// Задаём x y z по нулям
-	Vertices[0] = vec3(0.0f, 0.0f, 0.0f);
+	vec3 Vertices[3];
+	// Задаём вершины треугольника
+	Vertices[0] = vec3(-1.0f, -1.0f, 0.0f);
+	Vertices[1] = vec3(1.0f, -1.0f, 0.0f);
+	Vertices[2] = vec3(0.0f, 1.0f, 0.0f);
 
 	// Генерация объектов
 	glGenBuffers(1, &VBO);
